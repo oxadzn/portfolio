@@ -1,0 +1,17 @@
+# Claude Code local config
+.claude/
+.code-review-graph/
+graphify-out/
+
+# Node
+node_modules/
+.next/
+dist/
+build/
+.env
+.env.local
+.vercel
+
+# OS
+Thumbs.db
+.DS_Store
