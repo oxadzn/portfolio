@@ -12,13 +12,13 @@ export function Statement() {
         Why work with me
       </p>
 
-      <h2 className="max-w-5xl font-display text-[clamp(1.9rem,5.2vw,4.4rem)] leading-[1.05] text-blush">
+      <h2 className="max-w-5xl font-display text-[clamp(1.6rem,4vw,3.4rem)] font-medium leading-[1.08] text-blush">
         <RevealLines
           lines={[
             "Anyone can decorate.",
-            "I solve the hard, tangled briefs —",
-            "then make the answer look",
-            "effortless.",
+            "I untangle the hard briefs —",
+            "then make the answer",
+            "look effortless.",
           ]}
         />
       </h2>

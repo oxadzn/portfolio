@@ -18,13 +18,14 @@
 
   --color-surface: #26252800;
 
-  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--ff-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--ff-display), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--ff-serif), ui-serif, Georgia, serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  --spacing-gutter: clamp(1rem, 4vw, 4rem);
+  --spacing-gutter: clamp(1.25rem, 5vw, 5.5rem);
 }
 
 @layer base {
@@ -83,8 +84,8 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
@@ -108,14 +109,21 @@
     padding-inline: var(--spacing-gutter);
   }
 
-  /* Fluid display type */
+  /* Fluid display type — Unbounded is wide, so caps are conservative. */
   .text-display {
-    font-size: clamp(2.75rem, 9vw, 9.5rem);
-    line-height: 0.92;
+    font-size: clamp(2.5rem, 7.4vw, 7.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
   }
   .text-section {
-    font-size: clamp(2rem, 5vw, 4.5rem);
-    line-height: 0.98;
+    font-size: clamp(1.85rem, 4.6vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+
+  .italic-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
   }
 
   /* Subtle film grain over the whole page for depth */
@@ -143,6 +151,30 @@
   .mask-fade-b {
     -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
     mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  }
+
+  /* Radial "glade light" glows for the ambient background. */
+  .glow {
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.5;
+    will-change: transform;
+  }
+  .glow-teal {
+    background: radial-gradient(circle, rgba(114, 155, 121, 0.55), transparent 68%);
+  }
+  .glow-slate {
+    background: radial-gradient(circle, rgba(71, 91, 99, 0.6), transparent 70%);
+  }
+  .glow-ash {
+    background: radial-gradient(circle, rgba(186, 205, 176, 0.32), transparent 70%);
+  }
+
+  @media (max-width: 768px) {
+    .glow {
+      filter: blur(48px);
+      opacity: 0.38;
+    }
   }
 }
 

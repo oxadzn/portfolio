@@ -160,7 +160,7 @@ export default async function ProjectPage({
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-slate">
           Next project
         </p>
-        <p className="mt-4 font-display text-[clamp(2.5rem,8vw,7rem)] leading-none text-blush transition-colors group-hover:text-teal">
+        <p className="mt-4 font-display text-[clamp(2rem,6vw,5rem)] font-medium leading-[1.02] text-blush transition-colors group-hover:text-teal">
           {next.title}
         </p>
       </Link>

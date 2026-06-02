@@ -1,26 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
+import { fontVars } from "./fonts";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { Ambient } from "@/components/ambient";
 import { Cursor } from "@/components/cursor";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import "./globals.css";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  style: ["normal", "italic"],
-});
-
-const grotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-grotesk",
-  display: "swap",
-});
 
 const url = "https://oxadzn.com";
 
@@ -67,12 +55,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${grotesk.variable}`}>
+    <html lang="en" className={fontVars}>
       <body className="grain antialiased">
+        <Ambient />
         <SmoothScroll>
           <Cursor />
           <Nav />
-          <main id="top">{children}</main>
+          <main id="top" className="relative z-10">
+            {children}
+          </main>
           <Footer />
         </SmoothScroll>
         <Analytics />

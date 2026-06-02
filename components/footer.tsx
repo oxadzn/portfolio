@@ -5,39 +5,50 @@ import { Reveal } from "@/components/reveal";
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative overflow-hidden border-t border-ash/10 pt-24">
+    <footer
+      id="contact"
+      className="relative z-10 mt-24 overflow-hidden border-t border-ash/10 pt-24"
+    >
       <div className="gutter">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal">
-            Let&rsquo;s make something
+          <p className="font-mono text-xs uppercase tracking-[0.35em] text-teal">
+            Available for select work
           </p>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <a
-            href={`mailto:${site.email}`}
-            className="link-underline mt-6 block w-fit font-display text-[clamp(2.5rem,11vw,11rem)] leading-[0.9] text-blush"
-          >
-            {site.email}
-          </a>
+          <h2 className="mt-6 max-w-4xl text-[clamp(2.25rem,7vw,6rem)] font-medium leading-[0.98] text-blush">
+            Let&rsquo;s build the thing{" "}
+            <span className="italic-serif font-normal text-ash">they said was impossible.</span>
+          </h2>
         </Reveal>
 
-        <div className="mt-16 flex flex-wrap items-end justify-between gap-10 border-t border-ash/10 pt-10">
-          <div className="flex flex-wrap gap-x-10 gap-y-3">
+        <Reveal delay={0.1}>
+          <Magnetic strength={0.2} className="mt-12 inline-block">
+            <a
+              href={`mailto:${site.email}`}
+              data-cursor
+              className="group inline-flex items-center gap-4 rounded-full bg-blush px-8 py-4 text-base font-medium text-ink transition-colors hover:bg-teal"
+            >
+              {site.email}
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </Magnetic>
+        </Reveal>
+
+        <div className="mt-20 flex flex-wrap items-end justify-between gap-10 border-t border-ash/10 pt-10">
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
             {site.socials.map((s) => (
-              <Magnetic key={s.href} strength={0.25}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-baseline gap-2 text-ash transition-colors hover:text-blush"
-                >
-                  <span className="text-sm">{s.label}</span>
-                  <span className="font-mono text-xs text-slate group-hover:text-teal">
-                    ↗
-                  </span>
-                </a>
-              </Magnetic>
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-baseline gap-2 text-sm text-ash transition-colors hover:text-blush"
+              >
+                <span className="link-underline pb-0.5">{s.label}</span>
+                <span className="font-mono text-xs text-slate group-hover:text-teal">↗</span>
+              </a>
             ))}
           </div>
 
@@ -60,10 +71,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Oversized watermark */}
+      {/* Oversized watermark, clipped */}
       <div
         aria-hidden
-        className="pointer-events-none select-none px-2 text-center font-display text-[26vw] leading-none text-ash/[0.04]"
+        className="pointer-events-none -mb-[3vw] select-none px-2 text-center font-display text-[clamp(5rem,21vw,20rem)] font-semibold leading-none text-ash/[0.04]"
       >
         {site.name}
       </div>
