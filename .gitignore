@@ -15,3 +15,6 @@ build/
 # OS
 Thumbs.db
 .DS_Store
+
+# Raw design masters — huge source files, optimized into /public/work instead
+designs/masters/
