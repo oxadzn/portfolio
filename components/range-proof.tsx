@@ -105,6 +105,12 @@ function Tag({
   );
 }
 
+// Round to 3 decimals so the server and client renders emit byte-identical
+// coordinate strings. Raw Math.cos/sin output can differ by 1 ulp between the
+// SSR (Node) and hydration (browser) V8 passes, which trips React's hydration
+// mismatch check. 3 dp is sub-pixel on a 400-unit viewBox.
+const r3 = (n: number) => Math.round(n * 1000) / 1000;
+
 function ComplexMark() {
   // Dense, layered, "technical" — the receipt.
   const rays = Array.from({ length: 36 });
@@ -116,10 +122,10 @@ function ComplexMark() {
           return (
             <line
               key={i}
-              x1={Math.cos(a) * 40}
-              y1={Math.sin(a) * 40}
-              x2={Math.cos(a) * 185}
-              y2={Math.sin(a) * 185}
+              x1={r3(Math.cos(a) * 40)}
+              y1={r3(Math.sin(a) * 40)}
+              x2={r3(Math.cos(a) * 185)}
+              y2={r3(Math.sin(a) * 185)}
             />
           );
         })}
