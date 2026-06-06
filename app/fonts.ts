@@ -1,11 +1,11 @@
-import { Unbounded, Instrument_Serif, Space_Grotesk } from "next/font/google";
+import { Unbounded, Fraunces, Space_Grotesk } from "next/font/google";
 // import localFont from "next/font/local";
 
 /* ------------------------------------------------------------------ *
  *  TYPE SYSTEM
  *
  *  display → big statement headlines (awe)
- *  serif   → elegant italic accents
+ *  serif   → expressive italic accents (Fraunces — variable optical-size serif)
  *  sans    → UI / body
  *
  *  ── Want Reiswar as the display face? ──────────────────────────────
@@ -30,11 +30,12 @@ export const display = Unbounded({
   weight: ["400", "500", "600", "700"],
 });
 
-export const serif = Instrument_Serif({
+export const serif = Fraunces({
   subsets: ["latin"],
   variable: "--ff-serif",
   display: "swap",
-  weight: "400",
+  // Fraunces is variable — weight range covers light accents through display-weight italics.
+  // optical-size axis ('opsz') gives it ink-trap details at display sizes automatically.
   style: ["normal", "italic"],
 });
 

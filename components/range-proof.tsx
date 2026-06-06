@@ -37,7 +37,7 @@ export function RangeProof() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative aspect-[5/4] w-full select-none overflow-hidden rounded-2xl border border-ash/15 bg-shadow/60">
+          <div className="bracket-corners relative aspect-[5/4] w-full select-none overflow-hidden border border-ash/10 bg-shadow/60">
             {/* COMPLEX layer */}
             <div className="absolute inset-0 grid place-items-center">
               <ComplexMark />
@@ -62,12 +62,18 @@ export function RangeProof() {
               className="pointer-events-none absolute inset-y-0 z-10 w-px bg-blush/70"
               style={{ left: `${pos}%` }}
             >
-              <span className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-blush/70 bg-ink/70 text-blush backdrop-blur">
+              <span className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-blush/70 bg-ink/70 text-blush backdrop-blur">
                 ⇄
               </span>
             </div>
 
-            {/* Accessible control spanning the whole frame */}
+            {/* Axis labels */}
+            <div className="pointer-events-none absolute inset-x-4 bottom-3 z-10 flex justify-between">
+              <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-slate/50">← Complex</span>
+              <span className="font-mono text-[0.5rem] uppercase tracking-[0.2em] text-slate/50">Simple →</span>
+            </div>
+
+            {/* Accessible range input */}
             <input
               type="range"
               min={0}

@@ -11,7 +11,7 @@
  *  TO REMOVE: delete its block. That's it.
  * =================================================================== */
 
-export type Category = "identity" | "logo" | "poster";
+export type Category = "identity" | "logo" | "poster" | "event" | "illustration" | "social";
 
 export interface MediaItem {
   src: string;
@@ -65,149 +65,324 @@ export const categories: Record<
     plural: "Posters",
     description: "Composition, type, and tension. Where I let the work get loud.",
   },
+  event: {
+    label: "Event",
+    plural: "Event Design",
+    description: "Large-format print, stage graphics, and everything that surrounds a live experience.",
+  },
+  illustration: {
+    label: "Illustration",
+    plural: "Illustrations",
+    description: "Digital painting and character work — where the pen meets the screen.",
+  },
+  social: {
+    label: "Social",
+    plural: "Social Media",
+    description: "Scroll-stopping headers, banners, and branded assets built for the feed.",
+  },
 };
 
 /* ------------------------------------------------------------------ *
- *  SEED DATA — placeholder imagery. Replace with your real work.
+ *  PROJECTS
  * ------------------------------------------------------------------ */
 export const projects: Project[] = [
+  /* ── AEON ────────────────────────────────────────────────────────── */
   {
-    slug: "solene-botanical",
-    title: "Solène",
-    category: "identity",
-    year: 2024,
-    client: "Solène Botanical Skincare",
-    role: "Identity · Art Direction · Packaging",
-    blurb: "A botanical skincare identity that breathes — restraint as luxury.",
-    tags: ["Identity", "Packaging", "Typography"],
+    slug: "aeon",
+    title: "Aeon",
+    category: "event",
+    year: 2026,
+    role: "Event Design · Print · Posters",
+    blurb: "Visual identity and print campaign for Aeon — posters, slides, and large-format event graphics.",
+    tags: ["Event", "Print", "Poster", "Large Format"],
     featured: true,
     cover: {
-      src: "/work/identities/ph-identity-1.svg",
-      alt: "Solène botanical skincare identity — placeholder",
-      width: 1600,
-      height: 1200,
+      src: "/work/event/aeon26/Untitled28_20260310152344.webp",
+      alt: "Aeon 2026 — cover",
+      width: 2560,
+      height: 1138,
     },
     overview:
-      "Solène needed an identity that felt clinical enough to trust and soft enough to crave. The complexity was hidden in the restraint.",
+      "Aeon is the premier annual tech fest at Mahindra University. As the Design Head for the event, I established the core visual identity and developed comprehensive design templates for the junior design team to build upon.",
     challenge:
-      "The category is loud — gradients, claims, noise. Solène wanted to win on calm without disappearing on a crowded shelf.",
+      "Designing a cohesive, futuristic aesthetic that could scale flawlessly across a massive range of deliverables—from social media campaigns and presentation slides to large-format physical banners.",
     approach:
-      "A single botanical mark reduced to its essential line, paired with a high-contrast serif and a palette borrowed from pressed flora. The system scales from a 14px ingredient list to a full storefront.",
+      "I developed a high-contrast, structural design system combining bold typography, technical wireframe elements, and a deep palette. Every asset was meticulously crafted to feel like part of a unified, premium tech experience.",
     result:
-      "A flexible identity that reads as premium at every size — proof that a simple surface can sit on a deeply considered structure.",
+      "A complete visual takeover of the campus that elevated the festival's production value, providing a consistent, immersive atmosphere that resonated with attendees.",
     gallery: [
-      { src: "/work/identities/ph-identity-1.svg", alt: "Solène logo lockup", width: 1600, height: 1200 },
-      { src: "/work/identities/ph-identity-2.svg", alt: "Solène packaging system", width: 1200, height: 1500 },
-      { src: "/work/identities/ph-identity-3.svg", alt: "Solène type specimen", width: 1600, height: 900 },
+      {
+        src: "/work/event/aeon26/post1.webp",
+        alt: "Aeon — poster 1",
+        width: 2123,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/Untitled28_20260310152344.webp",
+        alt: "Aeon — wide graphic",
+        width: 2560,
+        height: 1138,
+      },
+      {
+        src: "/work/event/aeon26/Untitled32_20260304231906.webp",
+        alt: "Aeon — poster 2",
+        width: 1280,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/Untitled33_20260316190017.webp",
+        alt: "Aeon — poster 3",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/Untitled36_20260316185306.webp",
+        alt: "Aeon — poster 4",
+        width: 1920,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/Untitled48_20260328012008.webp",
+        alt: "Aeon — poster 5",
+        width: 1920,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/Untitled50_20260407154742.webp",
+        alt: "Aeon — poster 6",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/Untitled61_20260420105609.webp",
+        alt: "Aeon — poster 7",
+        width: 1280,
+        height: 2560,
+      },
+      {
+        src: "/work/event/aeon26/aeon26slide2.webp",
+        alt: "Aeon — slide 2",
+        width: 1920,
+        height: 2560,
+      },
     ],
   },
+
+  /* ── EVENT ──────────────────────────────────────────────────────── */
   {
-    slug: "hollow-oak",
-    title: "Hollow & Oak",
-    category: "identity",
-    year: 2023,
-    client: "Hollow & Oak Roasters",
-    role: "Identity · Packaging · Signage",
-    blurb: "Specialty coffee identity with a hand-cut woodblock soul.",
-    tags: ["Identity", "Illustration", "Packaging"],
+
+    slug: "gamecon",
+    title: "GameCon",
+    category: "event",
+    year: 2026,
+    role: "Event Design · Print · Posters",
+    blurb: "Full event branding for a campus gaming convention — posters, standees, and stage graphics.",
+    tags: ["Event", "Print", "Poster", "Large Format"],
     featured: true,
     cover: {
-      src: "/work/identities/ph-identity-2.svg",
-      alt: "Hollow & Oak roasters identity — placeholder",
-      width: 1200,
-      height: 1500,
+      src: "/work/event/gamecon/gc.webp",
+      alt: "GameCon event branding — cover",
+      width: 2560,
+      height: 1422,
     },
     overview:
-      "A roaster that cups like a lab but pours like a porch. The identity had to hold both.",
-    challenge: "Craft warmth without sliding into rustic cliché.",
+      "GameCon needed a visual system that felt cinematic and high-energy without losing legibility on a 16×8ft banner from 30 metres away.",
+    challenge:
+      "Designing across formats ranging from a 3×5 standee to a 330 MB courtyard banner — every element had to hold its weight at any scale.",
     approach:
-      "A custom woodcut monogram digitised and tightened, sitting on a strict grid. Warm soul, cold precision.",
-    result: "A mark that stamps as well on a bag as it embosses on glass.",
+      "A dark, high-contrast palette with bold display type and layered depth effects. Each piece was built as a self-contained poster that also reads as part of a cohesive campaign.",
+    result:
+      "A unified event identity that covered every surface of the venue — digital, print, and large-format — without a single asset feeling out of place.",
     gallery: [
-      { src: "/work/identities/ph-identity-2.svg", alt: "Hollow & Oak monogram", width: 1200, height: 1500 },
-      { src: "/work/identities/ph-identity-3.svg", alt: "Hollow & Oak bag system", width: 1600, height: 900 },
+      {
+        src: "/work/event/gamecon/Untitled109_20251103154544.webp",
+        alt: "GameCon poster — variant 1",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/Untitled111_20251104000358.webp",
+        alt: "GameCon poster — variant 2",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/Untitled112_20251104003940.webp",
+        alt: "GameCon poster — variant 3",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/Untitled114_20251104015620.webp",
+        alt: "GameCon poster — variant 4",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/Untitled118_20251104175709.webp",
+        alt: "GameCon standee — front",
+        width: 1280,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/Untitled118_20251104190425.webp",
+        alt: "GameCon standee — alternate",
+        width: 1280,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/Untitled119_20251105001624.webp",
+        alt: "GameCon poster — final",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/pbuildingworkshop poster.webp",
+        alt: "GameCon workshop poster",
+        width: 1810,
+        height: 2560,
+      },
+      {
+        src: "/work/event/gamecon/imgonline-com-ua-CompressToSize-DmSMN2vKyINvj.webp",
+        alt: "GameCon banner mockup",
+        width: 1497,
+        height: 2560,
+      },
     ],
   },
+
+
+  /* ── ILLUSTRATION ────────────────────────────────────────────────── */
   {
-    slug: "vega-mark",
-    title: "Vega",
-    category: "logo",
+    slug: "illustrations",
+    title: "Illustrations",
+    category: "illustration",
     year: 2024,
-    client: "Vega Analytics",
-    role: "Logo · Mark",
-    blurb: "A star-chart wordmark that resolves to a single point.",
-    tags: ["Logo", "Wordmark"],
+    role: "Digital Illustration",
+    blurb: "A collection of digital paintings and portrait studies — technique, texture, and character.",
+    tags: ["Illustration", "Digital Painting", "Portrait"],
     featured: true,
     cover: {
-      src: "/work/logos/ph-logo-1.svg",
-      alt: "Vega wordmark — placeholder",
-      width: 1400,
-      height: 1400,
+      src: "/work/illustration/illustrations/wemby.webp",
+      alt: "Wemby — digital portrait illustration",
+      width: 1920,
+      height: 2560,
     },
+    gallery: [
+      {
+        src: "/work/illustration/illustrations/port1.webp",
+        alt: "Illustration — port 1",
+        width: 2560,
+        height: 1707,
+      },
+      {
+        src: "/work/illustration/illustrations/port2.webp",
+        alt: "Illustration — port 2",
+        width: 2560,
+        height: 1707,
+      },
+      {
+        src: "/work/illustration/illustrations/port3.webp",
+        alt: "Illustration — port 3",
+        width: 2560,
+        height: 1707,
+      },
+
+      {
+        src: "/work/illustration/illustrations/port6.webp",
+        alt: "Illustration — port 6",
+        width: 2560,
+        height: 1707,
+      },
+    ],
   },
+
+  /* ── SOCIAL MEDIA BANNERS ────────────────────────────────────────── */
   {
-    slug: "northwind",
-    title: "Northwind",
-    category: "logo",
-    year: 2023,
-    client: "Northwind Sailing Co.",
-    role: "Logo · Mark",
-    blurb: "A compass and a sail compressed into one continuous stroke.",
-    tags: ["Logo", "Monogram"],
-    cover: {
-      src: "/work/logos/ph-logo-2.svg",
-      alt: "Northwind mark — placeholder",
-      width: 1400,
-      height: 1400,
-    },
-  },
-  {
-    slug: "pulse-fm",
-    title: "Pulse FM",
-    category: "logo",
+    slug: "social-media-banners",
+    title: "Social Banners",
+    category: "social",
     year: 2024,
-    client: "Pulse FM",
-    role: "Logo · Identity",
-    blurb: "A waveform that doubles as a P. Loud at any size.",
-    tags: ["Logo", "Sound"],
+    role: "Social Media Design · Brand Assets",
+    blurb: "A body of social headers, banners, and profile assets — each built around a distinct brand voice.",
+    tags: ["Social Media", "Banner", "Branding", "Digital"],
     featured: true,
     cover: {
-      src: "/work/logos/ph-logo-3.svg",
-      alt: "Pulse FM mark — placeholder",
-      width: 1400,
-      height: 1400,
+      src: "/work/social/social media banners/showboating.webp",
+      alt: "Showboating — social media banner",
+      width: 2560,
+      height: 1280,
     },
-  },
-  {
-    slug: "echo-chamber",
-    title: "Echo Chamber",
-    category: "poster",
-    year: 2024,
-    role: "Poster · Type",
-    blurb: "Type that repeats until it means something else.",
-    tags: ["Poster", "Typography"],
-    featured: true,
-    cover: {
-      src: "/work/posters/ph-poster-1.svg",
-      alt: "Echo Chamber poster — placeholder",
-      width: 1000,
-      height: 1414,
-    },
-  },
-  {
-    slug: "nocturne",
-    title: "Nocturne Series",
-    category: "poster",
-    year: 2023,
-    role: "Poster Series",
-    blurb: "A three-part poster set built on a single grid, broken three ways.",
-    tags: ["Poster", "Series"],
-    cover: {
-      src: "/work/posters/ph-poster-2.svg",
-      alt: "Nocturne poster series — placeholder",
-      width: 1000,
-      height: 1414,
-    },
+    gallery: [
+      {
+        src: "/work/social media banners/memors'.png",
+        alt: "Memors — social banner",
+        width: 4500,
+        height: 1500,
+        caption: "Memors'",
+      },
+      {
+        src: "/work/social/social media banners/velt.webp",
+        alt: "Velt — social banner",
+        width: 2560,
+        height: 853,
+        caption: "Velt",
+      },
+      {
+        src: "/work/social/social media banners/solar.webp",
+        alt: "Solar — social banner",
+        width: 2560,
+        height: 853,
+        caption: "Solar",
+      },
+      {
+        src: "/work/social/social media banners/requitheader.webp",
+        alt: "Requit — social header",
+        width: 2560,
+        height: 853,
+        caption: "Requit",
+      },
+      {
+        src: "/work/social/social media banners/comboheader.webp",
+        alt: "Combo — social header",
+        width: 2560,
+        height: 853,
+        caption: "Combo",
+      },
+      {
+        src: "/work/social/social media banners/masonfiled.webp",
+        alt: "Mason Filed — social banner",
+        width: 2560,
+        height: 853,
+        caption: "Mason Filed",
+      },
+      {
+        src: "/work/social/social media banners/NoXpost.webp",
+        alt: "NoXpost — social banner",
+        width: 2560,
+        height: 853,
+        caption: "NoXpost",
+      },
+      {
+        src: "/work/social/social media banners/shelboating.webp",
+        alt: "Shelboating — social banner",
+        width: 2560,
+        height: 1440,
+        caption: "Shelboating",
+      },
+      {
+        src: "/work/social/social media banners/Untitled146_20230617192617.webp",
+        alt: "Social banner — early work",
+        width: 2560,
+        height: 853,
+      },
+      {
+        src: "/work/social/social media banners/Untitled254_20240208093217.webp",
+        alt: "Social banner — 2024",
+        width: 2560,
+        height: 1440,
+      },
+    ],
   },
 ];
 

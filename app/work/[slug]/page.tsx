@@ -10,6 +10,7 @@ import {
 } from "@/content/projects";
 import { Gallery } from "@/components/lightbox";
 import { Reveal } from "@/components/reveal";
+import { CoverImage } from "@/components/cover-image";
 
 export function generateStaticParams() {
   return allSlugs().map((slug) => ({ slug }));
@@ -59,33 +60,52 @@ export default async function ProjectPage({
       <header className="gutter">
         <Link
           href="/work"
-          className="link-underline mb-10 inline-block text-sm text-ash hover:text-blush"
+          className="link-underline mb-8 inline-block font-mono text-[0.62rem] uppercase tracking-[0.2em] text-ash hover:text-blush"
         >
           ← All work
         </Link>
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal">
-          {categories[project.category].label}
-        </p>
-        <h1 className="text-display mt-4 font-display text-blush">{project.title}</h1>
-        <p className="mt-6 max-w-2xl text-xl text-ash/90">{project.blurb}</p>
 
-        <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-ash/10 pt-8 sm:grid-cols-4">
+        {/* Rule with ticks */}
+        <div className="relative mb-8 h-px bg-ash/10">
+          <span className="absolute left-0 -top-1.5 h-3 w-px bg-teal/55" />
+          <span className="absolute left-[30%] -top-1 h-2 w-px bg-ash/20" />
+          <span className="absolute left-[60%] -top-1 h-2 w-px bg-ash/20" />
+        </div>
+
+        {/* Category + year */}
+        <div className="flex items-center gap-3 font-mono text-[0.62rem] uppercase tracking-[0.3em]">
+          <span className="text-teal">{categories[project.category].label}</span>
+          <span className="text-slate/40">·</span>
+          <span className="text-slate/60">{project.year}</span>
+        </div>
+
+        {/* Title */}
+        <h1
+          className="mt-4 font-display font-medium text-blush"
+          style={{ fontSize: "clamp(2.5rem, 7.5vw, 7.5rem)", lineHeight: 0.92, letterSpacing: "-0.025em" }}
+        >
+          {project.title}
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg text-ash/80">{project.blurb}</p>
+
+        {/* Meta strip */}
+        <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5 border-t border-ash/10 pt-7">
           {meta.map((m) => (
             <div key={m.label}>
-              <dt className="font-mono text-xs uppercase tracking-widest text-slate">
+              <dt className="font-mono text-[0.55rem] uppercase tracking-widest text-slate">
                 {m.label}
               </dt>
-              <dd className="mt-1 text-blush">{m.value}</dd>
+              <dd className="mt-1 text-sm text-blush/90">{m.value}</dd>
             </div>
           ))}
         </dl>
 
         {project.tags.length > 0 && (
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {project.tags.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-ash/20 px-3 py-1 text-xs text-ash"
+                className="border border-ash/15 px-3 py-1 font-mono text-[0.58rem] uppercase tracking-[0.15em] text-ash/60"
               >
                 {t}
               </span>
@@ -96,19 +116,7 @@ export default async function ProjectPage({
 
       {/* Cover */}
       <div className="gutter mt-16">
-        <div
-          className="relative overflow-hidden rounded-2xl bg-shadow"
-          style={{ aspectRatio: `${project.cover.width} / ${project.cover.height}` }}
-        >
-          <Image
-            src={project.cover.src}
-            alt={project.cover.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
+        <CoverImage cover={project.cover} />
       </div>
 
       {/* Narrative */}
@@ -116,7 +124,7 @@ export default async function ProjectPage({
         <section className="gutter py-24 md:py-32">
           {project.overview && (
             <Reveal>
-              <p className="mx-auto max-w-3xl text-balance text-center font-display text-[clamp(1.5rem,3.5vw,2.75rem)] leading-tight text-blush">
+              <p className="w-full text-balance text-center font-display text-[clamp(1.5rem,4vw,3.5rem)] leading-[1.1] text-blush">
                 {project.overview}
               </p>
             </Reveal>

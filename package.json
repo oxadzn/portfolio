@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "optimize": "node scripts/optimize-designs.mjs"
+    "optimize": "node scripts/optimize-designs.mjs",
+    "thumbs": "node scripts/gen-thumbs.mjs"
   },
   "dependencies": {
     "@tsparticles/react": "^3.0.0",

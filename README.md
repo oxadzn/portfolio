@@ -1,34 +1,85 @@
-# oxadzn — design portfolio
+<div align="center">
+  <h1>✨ oxadzn — Design Portfolio</h1>
+  <p>An Awwwards-leaning, high-performance portfolio template for graphic designers and visual identity artists.</p>
 
-Awwwards-leaning portfolio for a graphic designer. Static, fast, free to host on
-Vercel. No backend, no database — projects live in **one typed file**.
-
-Built with **Next.js (App Router) · TypeScript · Tailwind v4 · Framer Motion ·
-Lenis · next/image**.
+  <!-- Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  </p>
+</div>
 
 ---
 
-## Run it locally
+## 📖 Overview
+
+This is a premium, static portfolio built specifically for high-end graphic designers. It focuses on visual excellence, smooth interactions, and uncompromised performance. 
+
+There's no backend, no database, and no complex CMS to wrangle. Your projects and site configuration live entirely in **typed TypeScript files**, making it fast to update, completely free to host, and a joy to maintain.
+
+> *"I build the complicated stuff most people can't. Which is exactly why the simple stuff lands."* — **oxadzn**
+
+## 🚀 Features
+
+- **Blazing Fast**: Static generation using Next.js App Router for instant load times.
+- **Premium Aesthetics**: Smooth scrolling via Lenis, micro-interactions via Framer Motion, and particle effects.
+- **Image Optimization**: Fully leverages `next/image` to serve optimized WebP/AVIF formats dynamically, so big design files never lag the page.
+- **Type-Safe Content**: Everything from site metadata to your gallery images is strictly typed, preventing broken links or missing fields.
+- **Zero-Config Deployment**: Optimized to deploy seamlessly on Vercel with zero environment variables needed.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **UI Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Smooth Scroll**: [Lenis](https://lenis.studiofreight.com/)
+- **Particles**: [@tsparticles/react](https://particles.js.org/)
+
+---
+
+## 💻 Running Locally
+
+To get started with local development, clone the repository and install the dependencies:
 
 ```bash
+# 1. Install dependencies
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # production build (what Vercel runs)
+
+# 2. Start the development server
+npm run dev
+```
+
+The site will now be running on [http://localhost:3000](http://localhost:3000).
+
+To test the production build locally:
+```bash
+npm run build
+npm run start
 ```
 
 ---
 
-## Add / remove a project (the only thing you do)
+## 📝 Managing Content
 
-Everything lives in **`content/projects.ts`**.
+The beauty of this portfolio is its simplicity. You don't need a CMS. Everything is managed via two files in the `content/` directory.
 
-1. **Drop your images** in `public/work/<category>/<your-project>/`
-   (`category` = `identities`, `logos`, or `posters`).
-2. **Add a block** to the `projects` array — copy an existing one:
+### 1. Site Configuration (`content/site.ts`)
+This file controls your global site information, including your name, role, email, social links, taglines, and the capabilities marquee. 
 
-```ts
+### 2. Projects & Portfolio (`content/projects.ts`)
+To add or remove a project, simply edit the `projects` array in this file.
+
+**Steps to add a new project:**
+1. **Upload Images**: Drop your images in `public/work/<category>/<your-project>/` (`category` must be `identities`, `logos`, or `posters`).
+2. **Add a Block**: Copy an existing project block and update the fields:
+
+```typescript
 {
-  slug: "acme-rebrand",          // URL: /work/acme-rebrand  (must be unique)
+  slug: "acme-rebrand",          // URL: /work/acme-rebrand (must be unique)
   title: "Acme",
   category: "identity",          // "identity" | "logo" | "poster"
   year: 2025,
@@ -36,47 +87,46 @@ Everything lives in **`content/projects.ts`**.
   role: "Identity · Art Direction",
   blurb: "One-line hook shown on cards.",
   tags: ["Identity", "Packaging"],
-  featured: true,                // show on the homepage
+  featured: true,                // Set to true to display on the homepage
   cover: {
     src: "/work/identities/acme/cover.jpg",
     alt: "Acme identity cover",
-    width: 1600, height: 1200,   // the image's REAL pixel size — prevents lag/jump
+    width: 1600, 
+    height: 1200,                // MUST be the image's exact pixel dimensions
   },
-  // Optional case-study fields (great for identities):
+  // Optional fields for detailed case studies:
   overview: "Big idea, one sentence.",
-  challenge: "...", approach: "...", result: "...",
+  challenge: "...", 
+  approach: "...", 
+  result: "...",
   gallery: [
     { src: "/work/identities/acme/01.jpg", alt: "...", width: 1600, height: 1000 },
   ],
-},
+}
 ```
 
-3. **Remove** a project: delete its block. Done.
+> **Important**: The `width` and `height` properties must reflect the image's *real* pixel dimensions. This is crucial for `next/image` to reserve the correct space and prevent cumulative layout shifts (CLS).
 
-> `width`/`height` must be the image's real pixels. That's how `next/image`
-> reserves space and serves AVIF/WebP — so big design files never lag the page.
-
-### Site-wide text
-Name, role, email, socials, the "complex → simple" thesis, and the capability
-marquee all live in **`content/site.ts`**.
-
-### Placeholder art
-The seed `*.svg` files in `public/work/**` are generated by
-`scripts/gen-placeholders.mjs`. Delete them as you add real work.
+### 3. Placeholder Art
+The seed `*.svg` files located in `public/work/**` are generated by `scripts/gen-placeholders.mjs`. Feel free to delete them as you add your real work.
 
 ---
 
-## Deploy to Vercel (free)
+## 🌍 Deployment
 
-1. Push to GitHub (already wired to `github.com/sbdh11/meet`).
-2. On [vercel.com](https://vercel.com) → **New Project** → import this repo →
-   **Deploy**. Framework auto-detects as Next.js. No env vars needed.
-3. Add your domain (e.g. `oxadzn.com`) under Project → Settings → Domains.
+This project is built to be deployed on [Vercel](https://vercel.com/) for free.
 
-Analytics + Speed Insights are already wired (`@vercel/analytics`,
-`@vercel/speed-insights`) — they light up automatically on Vercel.
+1. Push your code to GitHub.
+2. Go to Vercel → **New Project** → Import your repository.
+3. Click **Deploy** (Vercel automatically detects Next.js).
+4. Add your custom domain (e.g., `oxadzn.com`) in **Project → Settings → Domains**.
 
-### Contact form (optional, later)
-Right now "contact" is `mailto:`. For a real form with no backend, drop in
-[Formspree](https://formspree.io) (free) — one `<form action>` and done.
-Update the email in `content/site.ts`.
+*Note: Vercel Analytics and Speed Insights (`@vercel/analytics`, `@vercel/speed-insights`) are already wired up and will automatically activate upon deployment.*
+
+## 📬 Contact Form
+Currently, the contact button uses a simple `mailto:` link. To upgrade to a real form without a backend, we recommend using [Formspree](https://formspree.io/) (free). Just add their `<form action>` endpoint and update the email logic in your `content/site.ts`.
+
+---
+<div align="center">
+  <p>Designed and built with precision.</p>
+</div>

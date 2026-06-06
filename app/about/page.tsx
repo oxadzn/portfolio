@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: site.intro,
 };
 
-const process = [
+const designProcess = [
   { n: "01", t: "Listen", d: "Brief, audience, constraints. The problem before the pixels." },
   { n: "02", t: "Concept", d: "Sketches, references, and one defensible idea to build on." },
   { n: "03", t: "Craft", d: "Type, grid, color, balance — refined until it feels inevitable." },
@@ -29,8 +29,16 @@ export default function AboutPage() {
   return (
     <div className="pt-36 md:pt-44">
       <section className="gutter">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal">About</p>
-        <h1 className="text-section mt-5 max-w-5xl font-display text-blush">
+        <p className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-teal">About</p>
+        {/* Crosshair rule */}
+        <div className="relative mt-4 mb-6 h-px bg-ash/10">
+          <span className="absolute left-0 -top-1.5 h-3 w-px bg-teal/50" />
+          <span className="absolute left-[25%] -top-1 h-2 w-px bg-ash/20" />
+        </div>
+        <h1
+          className="max-w-5xl font-display font-medium text-blush"
+          style={{ fontSize: "clamp(2.75rem, 8vw, 7rem)", lineHeight: 0.92, letterSpacing: "-0.025em" }}
+        >
           <RevealLines
             lines={[
               "I design identities",
@@ -79,7 +87,7 @@ export default function AboutPage() {
           How it goes
         </p>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {process.map((p, i) => (
+          {designProcess.map((p, i) => (
             <Reveal key={p.n} delay={i * 0.07}>
               <div className="border-t border-ash/15 pt-5">
                 <span className="font-mono text-xs text-teal">{p.n}</span>

@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import { fontVars } from "./fonts";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Ambient } from "@/components/ambient";
+import { HudGrid } from "@/components/hud-grid";
 import { Cursor } from "@/components/cursor";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -58,6 +59,7 @@ export default function RootLayout({
     <html lang="en" className={fontVars}>
       <body className="grain antialiased">
         <Ambient />
+        <HudGrid />
         <SmoothScroll>
           <Cursor />
           <Nav />

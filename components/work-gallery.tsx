@@ -9,7 +9,10 @@ type Filter = "all" | Category;
 
 const filters: { key: Filter; label: string }[] = [
   { key: "all", label: "All" },
-  { key: "identity", label: "Identities" },
+  { key: "event", label: "Events" },
+  { key: "illustration", label: "Illustration" },
+  { key: "social", label: "Social" },
+  { key: "identity", label: "Identity" },
   { key: "logo", label: "Logos" },
   { key: "poster", label: "Posters" },
 ];
@@ -21,8 +24,8 @@ export function WorkGallery({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      {/* Sticky filter bar — always reachable, never in the way. */}
-      <div className="sticky top-0 z-[60] -mx-2 mb-12 flex flex-wrap gap-2 bg-[var(--bg)]/80 px-2 py-4 backdrop-blur-md">
+      {/* Filter tabs */}
+      <div className="sticky top-0 z-[60] -mx-2 mb-14 flex flex-wrap gap-0 border-b border-ash/15 bg-bg/95 px-2 pt-5 backdrop-blur-md">
         {filters.map((f) => {
           const active = filter === f.key;
           const count =
@@ -34,32 +37,30 @@ export function WorkGallery({ projects }: { projects: Project[] }) {
               key={f.key}
               onClick={() => setFilter(f.key)}
               data-cursor
-              className={`relative rounded-full px-5 py-2 text-sm transition-colors ${
-                active ? "text-ink" : "text-ash hover:text-blush"
+              className={`relative px-5 pb-3.5 pt-1 font-mono text-[0.75rem] uppercase tracking-[0.2em] transition-colors ${
+                active ? "text-blush" : "text-ash/50 hover:text-ash"
               }`}
             >
+              {f.label}
+              <sup className={`ml-1 text-[0.6rem] ${active ? "opacity-60" : "opacity-40"}`}>{count}</sup>
+              {/* Underline indicator */}
               {active && (
                 <motion.span
-                  layoutId="filter-pill"
-                  className="absolute inset-0 rounded-full bg-blush"
+                  layoutId="filter-line"
+                  className="absolute inset-x-0 bottom-0 h-[1.5px] bg-teal"
                   transition={{ type: "spring", stiffness: 400, damping: 32 }}
                 />
               )}
-              <span className="relative z-10">
-                {f.label}
-                <sup className="ml-1 font-mono text-[0.6rem] opacity-60">{count}</sup>
-              </span>
             </button>
           );
         })}
       </div>
 
-      <motion.div layout className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2">
         <AnimatePresence mode="popLayout">
           {shown.map((p, i) => (
             <motion.div
               key={p.slug}
-              layout
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
@@ -70,7 +71,7 @@ export function WorkGallery({ projects }: { projects: Project[] }) {
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
 
       {shown.length === 0 && (
         <p className="py-20 text-center text-ash/60">

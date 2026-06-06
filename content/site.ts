@@ -7,7 +7,7 @@ export const site = {
   // Shown big on the hero. Keep it sharp.
   role: "Graphic Designer & Visual Identity",
   location: "Available worldwide · Remote",
-  email: "hello@oxadzn.com", // TODO: set your real inbox
+  email: "oxacreativebz@gmail.com",
   // The thesis of the whole site: complex proves capability, simple proves taste.
   thesis:
     "I build the complicated stuff most people can't. Which is exactly why the simple stuff lands.",
@@ -17,7 +17,7 @@ export const site = {
     { label: "Twitter / X", handle: "@oxadzn", href: "https://twitter.com/oxadzn" },
     { label: "Behance", handle: "oxadzn", href: "https://www.behance.net/oxadzn" },
     { label: "Instagram", handle: "@oxadzn", href: "https://instagram.com/oxadzn" },
-    { label: "Email", handle: "hello@oxadzn.com", href: "mailto:hello@oxadzn.com" },
+    { label: "Email", handle: "oxacreativebz@gmail.com", href: "mailto:oxacreativebz@gmail.com" },
   ],
   // Marquee of capabilities / selected client types — swap freely.
   capabilities: [

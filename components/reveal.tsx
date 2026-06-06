@@ -28,7 +28,8 @@ export function Reveal({
   );
 }
 
-/** Reveals each child word/line with a stagger. Pass an array of strings. */
+/** Reveals each child word/line with a stagger. Uses opacity+shift so text
+ * is never completely hidden (avoids large invisible empty sections). */
 export function RevealLines({
   lines,
   className,
@@ -41,21 +42,20 @@ export function RevealLines({
   return (
     <span className={className}>
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden">
-          <motion.span
-            className={`block ${lineClassName ?? ""}`}
-            initial={{ y: "110%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.9,
-              delay: i * 0.08,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            {line}
-          </motion.span>
-        </span>
+        <motion.span
+          key={i}
+          className={`block ${lineClassName ?? ""}`}
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+          transition={{
+            duration: 0.9,
+            delay: i * 0.09,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+        >
+          {line}
+        </motion.span>
       ))}
     </span>
   );

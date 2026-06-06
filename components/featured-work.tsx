@@ -9,17 +9,27 @@ export function FeaturedWork() {
     <section id="work" className="gutter py-24 md:py-36">
       <div className="mb-16 flex items-end justify-between gap-6">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal">
-            Selected Work
-          </p>
-          <h2 className="text-section mt-4 font-display text-blush">
-            Range, on the record.
-          </h2>
+          <div className="relative">
+            {/* Ghost ordinal — editorial depth */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -left-1 -top-6 select-none font-display font-semibold text-ghost text-blush"
+              style={{ fontSize: "clamp(4rem, 10vw, 8rem)", lineHeight: 1, letterSpacing: "-0.04em", opacity: 0.065 }}
+            >
+              01
+            </span>
+            <p className="relative font-mono text-[0.65rem] uppercase tracking-[0.3em] text-teal">
+              Selected Work
+            </p>
+            <h2 className="text-section relative mt-4 font-display text-blush">
+              Range, on the record.
+            </h2>
+          </div>
         </Reveal>
         <Reveal delay={0.1}>
           <Link
             href="/work"
-            className="link-underline hidden whitespace-nowrap pb-1 text-sm text-ash hover:text-blush md:block"
+            className="link-underline hidden whitespace-nowrap pb-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ash hover:text-blush md:block"
           >
             All projects ↗
           </Link>

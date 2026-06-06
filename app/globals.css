@@ -2,11 +2,8 @@
 
 /* ------------------------------------------------------------------ *
  * Design tokens — palette: oxadzn
- *   #2E2C2F Shadow Grey   · base / ink
- *   #475B63 Blue Slate    · surfaces, borders
- *   #729B79 Muted Teal    · primary accent
- *   #BACDB0 Ash Grey      · secondary accent / muted text
- *   #F3E8EE Lavender Blush· foreground text
+ *   Aesthetic: brutalist editorial × organic forest
+ *   Teal (#729b79) is the signal colour — replaces red from references.
  * ------------------------------------------------------------------ */
 @theme {
   --color-ink: #201f22;
@@ -15,12 +12,14 @@
   --color-teal: #729b79;
   --color-ash: #bacdb0;
   --color-blush: #f3e8ee;
+  --color-bg: #1b1a1c;
 
-  --color-surface: #26252800;
+  --color-surface: #262528;
 
   --font-sans: var(--ff-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--ff-display), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--ff-serif), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Consolas", monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
@@ -52,7 +51,7 @@
     font-feature-settings: "ss01", "cv01";
   }
 
-  /* Lenis is driving scroll — disable native smooth so they don't fight. */
+  /* Lenis scroll — disable native smooth so they don't fight. */
   html.lenis,
   html.lenis body {
     height: auto;
@@ -70,14 +69,14 @@
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
     background: var(--bg);
   }
   ::-webkit-scrollbar-thumb {
     background: var(--color-slate);
-    border-radius: 99px;
+    border-radius: 0;
   }
 
   h1,
@@ -109,7 +108,7 @@
     padding-inline: var(--spacing-gutter);
   }
 
-  /* Fluid display type — Unbounded is wide, so caps are conservative. */
+  /* ── Fluid type scale ─────────────────────────────────────────── */
   .text-display {
     font-size: clamp(2.5rem, 7.4vw, 7.5rem);
     line-height: 0.94;
@@ -120,23 +119,52 @@
     line-height: 1;
     letter-spacing: -0.015em;
   }
+  /* Hero-scale — uses min(vw, vh) so it never overflows a short viewport.
+   * On a 1440×900 desktop this renders at ~9rem. On a 1024×576 laptop it
+   * caps to ~60px per line so all 4 lines fit comfortably in 100svh. */
+  .text-hero {
+    font-size: clamp(2.25rem, min(8vw, 10.5vh), 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
 
   .italic-serif {
     font-family: var(--font-serif);
     font-style: italic;
   }
 
-  /* Subtle film grain over the whole page for depth */
+  /* Ghost / outline type */
+  .text-ghost {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
+  }
+
+  /* Vertical text — for side labels like reference images */
+  .text-sideways {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* ── Film grain ───────────────────────────────────────────────── */
+  /* Heavier than before (0.055) to sell the editorial feel.
+   * translateZ(0) promotes to a compositor layer so the fixed pseudo-element
+   * doesn't trigger a full-page repaint on every scroll frame (Firefox fix). */
   .grain::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: 100;
     pointer-events: none;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    background-image: url("/noise.webp");
+    background-repeat: repeat;
+    background-size: 120px 120px;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
+  /* ── Links ────────────────────────────────────────────────────── */
   .link-underline {
     background-image: linear-gradient(currentColor, currentColor);
     background-position: 0 100%;
@@ -153,46 +181,124 @@
     mask-image: linear-gradient(to bottom, #000 70%, transparent);
   }
 
-  /* Radial "glade light" glows for the ambient background. */
+  /* ── Ambient glows ────────────────────────────────────────────── */
+  /* filter:blur is the primary Firefox performance killer.
+   * Reduced 70px → 40px (≈4× cheaper) + translateZ(0) for compositor layer.
+   * Opacity bumped slightly to compensate for tighter blur radius. */
   .glow {
     border-radius: 9999px;
-    filter: blur(70px);
-    opacity: 0.5;
+    filter: blur(40px);
+    opacity: 0.52;
     will-change: transform;
+    transform: translateZ(0);
   }
   .glow-teal {
-    background: radial-gradient(circle, rgba(114, 155, 121, 0.55), transparent 68%);
+    background: radial-gradient(circle, rgba(114, 155, 121, 0.5), transparent 68%);
   }
   .glow-slate {
-    background: radial-gradient(circle, rgba(71, 91, 99, 0.6), transparent 70%);
+    background: radial-gradient(circle, rgba(71, 91, 99, 0.55), transparent 70%);
   }
   .glow-ash {
-    background: radial-gradient(circle, rgba(186, 205, 176, 0.32), transparent 70%);
+    background: radial-gradient(circle, rgba(186, 205, 176, 0.28), transparent 70%);
   }
 
   @media (max-width: 768px) {
     .glow {
-      filter: blur(48px);
+      filter: blur(28px);
       opacity: 0.38;
     }
   }
+
+  /* ── HUD / editorial ──────────────────────────────────────────── */
+
+  /*
+   * Corner bracket marks — needs `position: relative` on the parent.
+   * Teal-tinted, small L-shapes at top-left and bottom-right.
+   */
+  .bracket-corners::before,
+  .bracket-corners::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: color-mix(in srgb, var(--color-teal) 45%, transparent);
+    border-style: solid;
+    pointer-events: none;
+    z-index: 1;
+    transition: border-color 0.3s ease;
+  }
+  .bracket-corners::before {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+  }
+  .bracket-corners::after {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0;
+  }
+
+  /*
+   * Teal scanline that sweeps down over images on hover.
+   * Parent must have `group` class, child gets `scan-line` class.
+   */
+  .scan-line {
+    position: absolute;
+    inset-x: 0;
+    height: 80px;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-teal) 18%, transparent),
+      transparent
+    );
+    top: -80px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+  }
+  .group:hover .scan-line {
+    opacity: 1;
+    animation: scan-down 1s ease-out forwards;
+  }
+
+  /* ── Image loading shimmer ────────────────────────────────────── */
+  .img-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--color-shadow) 0%,
+      color-mix(in srgb, var(--color-ash) 8%, var(--color-shadow)) 40%,
+      var(--color-shadow) 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
 }
 
+/* ── Keyframes ──────────────────────────────────────────────────── */
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
 }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes scan-down {
+  from { top: -80px; opacity: 1; }
+  70%  { opacity: 0.6; }
+  to   { top: 110%; opacity: 0; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48%       { opacity: 1; }
+  50%       { opacity: 0.6; }
+  52%       { opacity: 1; }
 }

@@ -42,7 +42,7 @@ export default function OG() {
             <span style={{ color: "#729b79" }}>.</span>
           </div>
           <div style={{ marginTop: 24, fontSize: 34, color: "#bacdb0", maxWidth: 900 }}>
-            Design that earns the second look.
+            {site.intro}
           </div>
         </div>
       </div>
