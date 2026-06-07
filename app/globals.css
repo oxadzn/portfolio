@@ -133,10 +133,9 @@
     font-style: italic;
   }
 
-  /* Ghost / outline type */
   .text-ghost {
     -webkit-text-stroke: 1px currentColor;
-    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 
   /* Vertical text — for side labels like reference images */

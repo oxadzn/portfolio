@@ -315,10 +315,10 @@ export const projects: Project[] = [
     },
     gallery: [
       {
-        src: "/work/social/social media banners/memors'.webp",
+        src: "/work/social media banners/memors'.png",
         alt: "Memors — social banner",
-        width: 2560,
-        height: 853,
+        width: 4500,
+        height: 1500,
         caption: "Memors'",
       },
       {
