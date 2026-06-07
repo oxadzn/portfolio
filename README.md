@@ -24,7 +24,7 @@ There's no backend, no database, and no complex CMS to wrangle. Your projects an
 
 ## 🚀 Features
 
-- **Blazing Fast**: Static generation using Next.js App Router for instant load times.
+- **Lightning Fast**: Static generation using Next.js App Router for instant load times.
 - **Premium Aesthetics**: Smooth scrolling via Lenis, micro-interactions via Framer Motion, and particle effects.
 - **Image Optimization**: Fully leverages `next/image` to serve optimized WebP/AVIF formats dynamically, so big design files never lag the page.
 - **Type-Safe Content**: Everything from site metadata to your gallery images is strictly typed, preventing broken links or missing fields.
