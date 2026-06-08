@@ -15,7 +15,7 @@ export const site = {
     "Identity systems, posters, and logos with intent. I design from the idea out — so a mark works as hard at 16px as it does on a billboard.",
   socials: [
     { label: "Twitter / X", handle: "@oxadzn", href: "https://twitter.com/oxadzn" },
-    { label: "Behance", handle: "oxadzn", href: "https://www.behance.net/oxadzn" },
+    { label: "Behance", handle: "xensaberyt", href: "https://www.behance.net/xensaberyt" },
     { label: "Instagram", handle: "@oxadzn", href: "https://instagram.com/oxadzn" },
     { label: "Email", handle: "oxacreativebz@gmail.com", href: "mailto:oxacreativebz@gmail.com" },
   ],
